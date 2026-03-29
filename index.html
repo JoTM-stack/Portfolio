@@ -1,249 +1,1190 @@
 <!DOCTYPE html>
-
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Joseph M. Tsie - Data Engineering Portfolio</title>
+    <title>Joseph M. Tsie - Digital Portfolio</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
 
-```
-<style>
-    * { margin: 0; padding: 0; box-sizing: border-box; }
+        body {
+            font-family: Arial, sans-serif;
+            color: #333;
+            background: url('b1.jpg') no-repeat center center/cover;
+            background-attachment: fixed;
+            min-height: 100vh;
+        }
 
-    body {
-        font-family: Arial, sans-serif;
-        color: #333;
-        background: url('b1.jpg') no-repeat center center/cover;
-        background-attachment: fixed;
-    }
+        .container {
+            max-width: 1100px;
+            margin: 0 auto;
+            padding: 30px;
+            margin-left: 135px;
+        }
 
-    .container {
-        max-width: 1100px;
-        margin: auto;
-        padding: 20px;
-    }
+        /* Navigation */
+        nav {
+            display: flex;
+            gap: 10px;
+            font-weight: bold;
+            flex-wrap: wrap;
+            margin-bottom: 40px;
+            margin-left: 30px;
+            position: sticky;
+            top: 20px;
+            z-index: 100;
+            background: rgba(255, 255, 255, 0.9);
+            padding: 15px 20px;
+            border-radius: 8px;
+            backdrop-filter: blur(10px);
+        }
 
-    nav {
-        display: flex;
-        gap: 15px;
-        justify-content: center;
-        margin-bottom: 30px;
-        background: rgba(255,255,255,0.9);
-        padding: 10px;
-        border-radius: 8px;
-    }
+        nav a {
+            text-decoration: none;
+            color: #666;
+            transition: color 0.3s ease;
+            font-size: 12px;
+            letter-spacing: 1px;
+            margin-left: 20px;
+        }
 
-    nav a {
-        text-decoration: none;
-        font-size: 13px;
-        color: #444;
-        font-weight: bold;
-    }
+        nav a:hover {
+            color: #FF8C42;
+        }
 
-    nav a:hover { color: #FF8C42; }
+        /* Header */
+        .header {
+            margin-bottom: 60px;
+            margin-left: 30px;
+        }
 
-    .header {
-        text-align: center;
-        margin-bottom: 40px;
-    }
+        .header h1 {
+            font-size: 35px;
+            font-weight: bold;
+            color: #333;
+            margin-bottom: 15px;
+            font-family: Georgia, serif;
+        }
 
-    .header h1 { font-size: 32px; }
+        .headerr {
+            margin-top: -147px;
+            margin-bottom: 70px;
+            margin-left: 192px;
+        }
 
-    .subtitle {
-        font-size: 13px;
-        margin-top: 10px;
-    }
+        .headerr h0 {
+            font-size: 35px;
+            font-weight: bold;
+            color: #FF8C42;
+            font-family: Georgia, serif;
+        }
 
-    .highlight {
-        color: #FF8C42;
-        margin-top: 10px;
-        font-size: 14px;
-    }
+        .header .subtitle {
+            color: #666;
+            font-size: 10px;
+            line-height: 1.6;
+            max-width: 600px;
+        }
 
-    .section {
-        margin-bottom: 50px;
-    }
+        /* About Section - Separate from Projects */
+        .about-section {
+            display: flex;
+            align-items: stretch;
+            gap: 50px;
+            margin-bottom: 60px;
+            min-height: 600px;
+            scroll-margin-top: 100px;
+        }
 
-    .box {
-        background: rgba(0,0,0,0.7);
-        color: white;
-        padding: 20px;
-        border-radius: 8px;
-    }
+        .about-image-container {
+            width: 100%;
+            display: flex;
+            flex-direction: column;
+        }
 
-    .projects {
-        display: flex;
-        flex-direction: column;
-        gap: 30px;
-    }
+        .about-image-container img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            border-radius: 8px;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
 
-    .project {
-        display: flex;
-        flex-direction: column;
-        gap: 10px;
-    }
+        .about-image-container img:hover {
+            transform: scale(1.02);
+            box-shadow: 0 6px 20px rgba(0, 0, 0, 0.4);
+        }
 
-    .tech {
-        display: flex;
-        flex-wrap: wrap;
-        gap: 6px;
-    }
+        .about-description {
+            width: 400px;
+            background-color: rgba(0, 0, 0, 0.6);
+            color: white;
+            padding: 30px;
+            border-radius: 8px;
+            backdrop-filter: blur(5px);
+            display: flex;
+            flex-direction: column;
+        }
 
-    .tag {
-        background: rgba(255,255,255,0.2);
-        padding: 5px 10px;
-        border-radius: 10px;
-        font-size: 12px;
-    }
+        /* Projects Container */
+        .projects-container {
+            display: flex;
+            flex-direction: column;
+            gap: 60px;
+            scroll-margin-top: 100px;
+        }
 
-    @media(max-width:768px){
-        body { background-attachment: scroll; }
-    }
-</style>
-```
+        /* Each Project */
+        .project {
+            display: flex;
+            align-items: stretch;
+            gap: 40px;
+            min-height: 400px;
+        }
 
+        /* Reverse layout for even projects */
+        .project.even {
+            flex-direction: row-reverse;
+        }
+
+        /* About section - always image on left */
+        .project.about {
+            flex-direction: row;
+        }
+
+        /* Image & Description equal width */
+        .project .image-container,
+        .project .description {
+            flex: 1;
+        }
+
+        .project .image-container {
+            display: flex;
+            flex-direction: column;
+        }
+
+        .project img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            border-radius: 8px;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .project img:hover {
+            transform: scale(1.02);
+            box-shadow: 0 6px 20px rgba(0, 0, 0, 0.4);
+        }
+
+        /* Description Styling */
+        .description {
+            background-color: rgba(0, 0, 0, 0.6);
+            color: white;
+            padding: 30px;
+            border-radius: 8px;
+            backdrop-filter: blur(5px);
+            display: flex;
+            flex-direction: column;
+        }
+
+        .description h3 {
+            font-size: 24px;
+            margin-bottom: 15px;
+            color: white;
+        }
+
+        .description p {
+            font-size: 16px;
+            line-height: 1.6;
+            margin-bottom: 20px;
+        }
+
+        .tech-stack {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 8px;
+            margin-top: auto;
+        }
+
+        .tech-tag {
+            background: rgba(255, 255, 255, 0.2);
+            color: white;
+            padding: 6px 12px;
+            border-radius: 15px;
+            font-size: 12px;
+            font-weight: 500;
+            border: 1px solid rgba(255, 255, 255, 0.3);
+        }
+
+        /* About Me Section - First Project */
+        .about-description h3 {
+            font-size: 24px;
+            margin-bottom: 15px;
+            color: white;
+        }
+
+        .about-description p {
+            font-size: 13px;
+            line-height: 1.6;
+            margin-bottom: 15px;
+        }
+
+        .contact-info {
+            margin-top: 20px;
+            font-size: 14px;
+            scroll-margin-top: 100px;
+        }
+
+        .contact-info div {
+            margin-bottom: 8px;
+            opacity: 0.9;
+        }
+
+        /* Skills Section */
+        .skills-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 15px;
+            margin-top: auto;
+            padding-top: 15px;
+        }
+
+        .skill-item {
+            background: rgba(255, 255, 255, 0.1);
+            padding: 15px;
+            border-radius: 6px;
+            border-left: 3px solid rgba(255, 255, 255, 0.5);
+        }
+
+        .skill-item h4 {
+            font-size: 14px;
+            margin-bottom: 8px;
+            color: #fff;
+        }
+
+        .skill-item p {
+            font-size: 12px;
+            color: rgba(255, 255, 255, 0.8);
+            line-height: 1.4;
+        }
+
+        /* Skills Section */
+        .skills-section {
+            margin-bottom: 60px;
+            background-color: rgba(128, 128, 128, 0.9);
+            color: #333;
+            padding: 40px;
+            border-radius: 12px;
+            width: 100%;
+            max-width: 100%;
+            scroll-margin-top: 100px;
+        }
+
+        .skills-section h2 {
+            font-size: 28px;
+            margin-bottom: 30px;
+            color: white;
+            text-align: center;
+        }
+
+        .skills-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 20px;
+            width: 100%;
+        }
+
+        .skill-category {
+            background: transparent;
+            padding: 15px;
+            border-radius: 8px;
+            width: 100%;
+            position: relative;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .skill-category:hover {
+            background: rgba(70, 25, 55, 0.1);
+        }
+
+        .skill-category h3 {
+            font-size: 16px;
+            margin-bottom: 0;
+            color: #333;
+            font-weight: 600;
+            padding: 10px 0;
+            border-bottom: 2px solid #666;
+        }
+
+        .skill-category p {
+            font-size: 14px;
+            color: white;
+            line-height: 1.6;
+            margin: 0;
+            max-height: 0;
+            overflow: hidden;
+            opacity: 0;
+            transition: all 0.3s ease;
+            padding: 0;
+        }
+
+        .skill-category:hover p {
+            max-height: 200px;
+            opacity: 1;
+            padding: 15px 0 0 0;
+        }
+
+        /* Contact Section */
+        .contact-section {
+            margin-top: 80px;
+            background: linear-gradient(135deg, rgba(0, 0, 0, 0.8), rgba(51, 51, 51, 0.9));
+            padding: 60px 0;
+            border-radius: 12px;
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .contact-container {
+            display: flex;
+            align-items: center;
+            gap: 60px;
+            max-width: 1000px;
+            margin: 0 auto;
+            padding: 0 40px;
+        }
+
+        .contact-content {
+            flex: 1;
+            color: white;
+        }
+
+        .contact-content h2 {
+            font-size: 32px;
+            margin-bottom: 20px;
+            color: white;
+            font-family: Georgia, serif;
+        }
+
+        .contact-content p {
+            font-size: 16px;
+            line-height: 1.6;
+            margin-bottom: 30px;
+            color: rgba(255, 255, 255, 0.9);
+        }
+
+        .contact-details {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 20px;
+            margin-bottom: 30px;
+        }
+
+        .contact-item {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            background: rgba(255, 255, 255, 0.1);
+            padding: 20px;
+            border-radius: 8px;
+            transition: all 0.3s ease;
+            border-left: 4px solid #FF8C42;
+        }
+
+        .contact-item:hover {
+            background: rgba(255, 255, 255, 0.15);
+            transform: translateY(-2px);
+        }
+
+        .contact-icon {
+            font-size: 24px;
+            width: 40px;
+            text-align: center;
+        }
+
+        .contact-text {
+            flex: 1;
+        }
+
+        .contact-text .label {
+            font-size: 12px;
+            color: rgba(255, 255, 255, 0.7);
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            margin-bottom: 5px;
+        }
+
+        .contact-text .value {
+            font-size: 14px;
+            color: white;
+            font-weight: 500;
+        }
+
+        .contact-image {
+            width: 300px;
+            height: 300px;
+            border-radius: 12px;
+            overflow: hidden;
+            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
+            transition: transform 0.3s ease;
+        }
+
+        .contact-image:hover {
+            transform: scale(1.05);
+        }
+
+        .contact-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .social-links {
+            display: flex;
+            gap: 15px;
+            margin-top: 20px;
+        }
+
+        .social-link {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            width: 45px;
+            height: 45px;
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 8px;
+            color: white;
+            text-decoration: none;
+            font-size: 20px;
+            transition: all 0.3s ease;
+            border: 1px solid rgba(255, 255, 255, 0.2);
+        }
+
+        .social-link:hover {
+            background: #FF8C42;
+            transform: translateY(-3px);
+            box-shadow: 0 6px 20px rgba(255, 140, 66, 0.4);
+        }
+
+        /* LinkedIn Message Modal */
+        .linkedin-modal {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.7);
+            z-index: 1000;
+            backdrop-filter: blur(5px);
+        }
+
+        .linkedin-modal-content {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            background: linear-gradient(135deg, rgba(0, 0, 0, 0.9), rgba(51, 51, 51, 0.9));
+            border: 2px solid #FF8C42;
+            border-radius: 12px;
+            padding: 30px;
+            max-width: 400px;
+            width: 90%;
+            text-align: center;
+            color: white;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+        }
+
+        .linkedin-modal h3 {
+            color: #FF8C42;
+            margin-bottom: 15px;
+            font-size: 20px;
+        }
+
+        .linkedin-modal p {
+            margin-bottom: 20px;
+            line-height: 1.5;
+            font-size: 14px;
+        }
+
+        .linkedin-modal button {
+            background: #FF8C42;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 6px;
+            cursor: pointer;
+            font-size: 14px;
+            transition: background 0.3s ease;
+        }
+
+        .linkedin-modal button:hover {
+            background: #e67a35;
+        }
+
+        @media (max-width: 480px) {
+            .linkedin-modal-content {
+                padding: 20px;
+                max-width: 300px;
+            }
+            
+            .linkedin-modal h3 {
+                font-size: 18px;
+            }
+            
+            .linkedin-modal p {
+                font-size: 13px;
+            }
+        }
+
+        /* Mobile Responsive Styles - Enhanced */
+        @media (max-width: 768px) {
+            body {
+                background-attachment: scroll;
+                font-size: 16px;
+            }
+
+            .container {
+                padding: 15px;
+                margin-left: 0;
+                max-width: 100%;
+            }
+
+            /* Navigation - Mobile Optimized */
+            nav {
+                margin-left: 0;
+                margin-bottom: 20px;
+                position: relative;
+                top: 0;
+                justify-content: center;
+                padding: 12px 15px;
+                gap: 15px;
+            }
+
+            nav a {
+                margin-left: 0;
+                font-size: 14px;
+                padding: 8px 12px;
+                border-radius: 4px;
+                background: rgba(255, 255, 255, 0.1);
+            }
+
+            /* Header - Mobile Optimized */
+            .header {
+                margin-left: 0;
+                margin-bottom: 30px;
+                text-align: center;
+            }
+
+            .header h1 {
+                font-size: 28px;
+                line-height: 1.2;
+            }
+
+            .headerr {
+                margin-top: -80px;
+                margin-left: 0;
+                margin-bottom: 40px;
+                text-align: center;
+            }
+
+            .headerr h0 {
+                font-size: 28px;
+            }
+
+            .header .subtitle {
+                font-size: 12px;
+                text-align: center;
+                margin: 0 auto;
+                max-width: 100%;
+                line-height: 1.4;
+            }
+
+            /* About Section - Mobile Optimized */
+            .about-section {
+                flex-direction: column;
+                gap: 20px;
+                min-height: auto;
+                margin-bottom: 40px;
+            }
+
+            .about-image-container {
+                flex: none;
+                width: 100%;
+            }
+
+            .about-image-container img {
+                height: 250px;
+                width: 100%;
+            }
+
+            .about-description {
+                width: 100%;
+                padding: 20px;
+            }
+
+            .about-description h3 {
+                font-size: 20px;
+                text-align: center;
+                margin-bottom: 15px;
+            }
+
+            .about-description p {
+                font-size: 14px;
+                line-height: 1.5;
+                text-align: left;
+            }
+
+            .contact-info {
+                font-size: 13px;
+                margin-top: 15px;
+            }
+
+            /* Skills Section - Mobile Optimized */
+            .skills-section {
+                padding: 25px 15px;
+                margin-bottom: 40px;
+            }
+
+            .skills-section h2 {
+                font-size: 24px;
+                margin-bottom: 20px;
+            }
+
+            .skills-container {
+                grid-template-columns: 1fr;
+                gap: 15px;
+            }
+
+            .skill-category {
+                padding: 15px;
+            }
+
+            .skill-category h3 {
+                font-size: 15px;
+            }
+
+            .skill-category p {
+                font-size: 13px;
+            }
+
+            /* Mobile: Always show skill descriptions */
+            .skill-category p {
+                max-height: none;
+                opacity: 1;
+                padding: 15px 0 0 0;
+            }
+
+            /* Projects - Mobile Optimized */
+            .projects-container {
+                gap: 40px;
+            }
+
+            .project,
+            .project.even {
+                flex-direction: column;
+                gap: 20px;
+                min-height: auto;
+            }
+
+            .project img {
+                height: 200px;
+                width: 100%;
+            }
+
+            .description {
+                padding: 20px;
+                width: 100%;
+            }
+
+            .description h3 {
+                font-size: 20px;
+                margin-bottom: 12px;
+                text-align: center;
+            }
+
+            .description p {
+                font-size: 14px;
+                line-height: 1.5;
+                margin-bottom: 15px;
+                text-align: left;
+            }
+
+            .tech-stack {
+                justify-content: center;
+                margin-top: 15px;
+            }
+
+            .tech-tag {
+                font-size: 11px;
+                padding: 5px 10px;
+            }
+
+            /* Contact Section - Mobile Optimized */
+            .contact-section {
+                padding: 40px 0;
+                margin-top: 40px;
+            }
+
+            .contact-container {
+                flex-direction: column;
+                gap: 30px;
+                padding: 0 15px;
+            }
+
+            .contact-content h2 {
+                font-size: 24px;
+                text-align: center;
+                margin-bottom: 15px;
+            }
+
+            .contact-content p {
+                font-size: 14px;
+                line-height: 1.5;
+                text-align: center;
+                margin-bottom: 20px;
+            }
+
+            .contact-details {
+                grid-template-columns: 1fr;
+                gap: 15px;
+                margin-bottom: 20px;
+            }
+
+            .contact-item {
+                padding: 15px;
+                flex-direction: row;
+                align-items: center;
+            }
+
+            .contact-icon {
+                font-size: 20px;
+                width: 35px;
+            }
+
+            .contact-text .label {
+                font-size: 11px;
+            }
+
+            .contact-text .value {
+                font-size: 13px;
+            }
+
+            .contact-image {
+                width: 200px;
+                height: 200px;
+                margin: 0 auto;
+            }
+
+            .social-links {
+                justify-content: center;
+                gap: 12px;
+                margin-top: 15px;
+            }
+
+            .social-link {
+                width: 40px;
+                height: 40px;
+                font-size: 18px;
+            }
+
+            /* Scroll margin adjustments for mobile */
+            .about-section,
+            .skills-section,
+            .projects-container,
+            .contact-info {
+                scroll-margin-top: 20px;
+            }
+        }
+
+        /* Extra Small Mobile Devices */
+        @media (max-width: 480px) {
+            .container {
+                padding: 10px;
+            }
+
+            .header h1,
+            .headerr h0 {
+                font-size: 24px;
+            }
+
+            .header .subtitle {
+                font-size: 11px;
+            }
+
+            nav {
+                padding: 10px;
+                gap: 8px;
+            }
+
+            nav a {
+                font-size: 12px;
+                padding: 6px 10px;
+            }
+
+            .about-description,
+            .description {
+                padding: 15px;
+            }
+
+            .skills-section {
+                padding: 20px 10px;
+            }
+
+            .project img,
+            .about-image-container img {
+                height: 180px;
+            }
+
+            .contact-container {
+                padding: 0 10px;
+            }
+
+            .contact-image {
+                width: 150px;
+                height: 150px;
+            }
+        }
+
+        /* Fade in animation */
+        .fade-in {
+            opacity: 0;
+            transform: translateY(30px);
+            animation: fadeIn 0.8s ease forwards;
+        }
+
+        @keyframes fadeIn {
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        /* Prevent horizontal scrolling */
+        html, body {
+            overflow-x: hidden;
+            width: 100%;
+        }
+    </style>
 </head>
-
 <body>
+    <div class="container">
+        <!-- Navigation -->
+        <nav>
+            <a href="#about">ABOUT</a>
+            <a href="#skills">SKILLS</a>
+            <a href="#projects">PROJECTS</a>
+            <a href="#contact-full">CONTACT</a>
+        </nav>
 
-<div class="container">
-
-<nav>
-    <a href="#about">ABOUT</a>
-    <a href="#skills">SKILLS</a>
-    <a href="#projects">PROJECTS</a>
-    <a href="#contact">CONTACT</a>
-</nav>
-
-<div class="header">
-    <h1>JOSEPH TSIE</h1>
-
-```
-<div class="subtitle">
-    DATA ENGINEER | PYTHON & SQL | ETL PIPELINES | AIRFLOW | AWS (LEARNING)
-</div>
-
-<div class="highlight">
-    Focused on Data Engineering Roles • Open to Internships & Graduate Programs
-</div>
-```
-
-</div>
-
-<!-- ABOUT -->
-
-<div class="section" id="about">
-    <div class="box">
-        <h2>About Me</h2>
-
-```
-    <p>I am a Computer Engineering graduate transitioning into Data Engineering, focused on building scalable data pipelines and analytics systems.</p>
-
-    <p>I specialize in designing ETL workflows using Python and SQL, working with tools like Apache Airflow, Docker, and cloud-based storage.</p>
-
-    <p>Currently building real-world data engineering projects involving ingestion, transformation, orchestration, and storage.</p>
-
-    <br>
-    <p>📧 jaytm083@gmail.com</p>
-    <p>📱 068 344 3774</p>
-    <p>📍 Johannesburg, South Africa</p>
-</div>
-```
-
-</div>
-
-<!-- SKILLS -->
-
-<div class="section" id="skills">
-    <div class="box">
-        <h2>Skills</h2>
-
-```
-    <p><b>Data Engineering:</b> ETL pipelines, data ingestion, transformation, Airflow orchestration</p>
-    <p><b>Programming:</b> Python, SQL, Java</p>
-    <p><b>Databases:</b> MySQL, schema design</p>
-    <p><b>Tools:</b> Docker, Airflow, GitHub</p>
-    <p><b>Cloud:</b> AWS S3 (learning)</p>
-</div>
-```
-
-</div>
-
-<!-- PROJECTS -->
-
-<div class="section" id="projects">
-    <div class="box">
-        <h2>Projects</h2>
-
-```
-    <div class="projects">
-
-        <div class="project">
-            <h3>📊 ETL Data Pipeline</h3>
-            <p>Built a pipeline that extracts CSV data, cleans it, and loads into MySQL with validation and error handling.</p>
-            <div class="tech">
-                <span class="tag">Python</span>
-                <span class="tag">Pandas</span>
-                <span class="tag">MySQL</span>
+        <!-- Header -->
+        <div class="header">
+            <h1>JOSEPH TSIE</h1>
+            <div class="subtitle">
+               COMPUTER ENGINEERING STUDENT | SOFTWARE DEVELOPER | PROGRAMMER <br>
+               WEB DESIGN | SQL & PYTHON DATA PIPELINES
+            </div>
+        </div>
+<!--
+        <div class="headerr">
+            <h0>TSIE</h0>
+        </div>
+-->
+        <!-- About Section -->
+        <div class="about-section" id="about">
+            <div class="about-image-container">
+                <img src="b2.jpg" alt="About Joseph Tsie">
+            </div>
+            <div class="about-description">
+                <h3>About Me</h3>
+                <p>I am a motivated Computer Engineering student passionate about problem-solving, innovation, and hands-on experience in system design, programming, and software development.</p>
+                <p>My technology journey began in 2021 when I worked as a Teaching Assistant, which helped me discover my potential in Information Technology. Since enrolling in computer engineering, I have actively engaged in projects both within and beyond my curriculum.</p>
+                <p>My goal is to build a career as a Data Engineer, designing and building robust data infrastructures. I am currently expanding my expertise in data pipelines and APIs while developing full-stack applications and embedded systems solutions.</p>
+                
+                <div class="contact-info" id="contact">
+                    <div>📧 jaytm083@gmail.com</div>
+                    <div>📱 068 344 3774</div>
+                    <div>📍 Cape Town, South Africa</div>
+                </div>
             </div>
         </div>
 
-        <div class="project">
-            <h3>⚙️ Airflow Pipeline</h3>
-            <p>Automated ETL workflows using Airflow DAGs with scheduling, retries, and logging.</p>
-            <div class="tech">
-                <span class="tag">Airflow</span>
-                <span class="tag">Python</span>
+        <!-- Skills Section -->
+        <div class="skills-section" id="skills">
+            <h2>Technical Skills</h2>
+            <div class="skills-container">
+                <div class="skill-category">
+                    <h3>Software Development & Programming</h3>
+                    <p>System architecture design, web development, requirements analysis, software development lifecycle (SDLC), Agile/Scrum methodologies, code optimization, algorithm development, debugging and troubleshooting, HTML/CSS</p>
+                </div>
+                
+                <div class="skill-category">
+                    <h3>Programming Languages</h3>
+                    <p>Java, Python, C/C++ (system programming, embedded applications), JavaScript (DOM manipulation), MATLAB</p>
+                </div>
+                
+                <div class="skill-category">
+                    <h3>Database Management</h3>
+                    <p>MySQL database design and administration, SQL programming, query optimization, performance tuning</p>
+                </div>
+                
+                <div class="skill-category">
+                    <h3>Network Engineering</h3>
+                    <p>Cisco Packet Tracer simulation, Huawei eNSP network emulation, TCP/IP protocol implementation, routing and switching configuration, VLAN setup, network troubleshooting and security protocols</p>
+                </div>
+                
+                <div class="skill-category">
+                    <h3>Embedded Systems & Industrial Automation</h3>
+                    <p>Arduino programming and sensor integration, IoT development, Siemens PLC and HMI programming (Ladder Logic, Function Block Diagrams, visual layout), MATLAB Simulink modeling and simulation, microcontroller programming, hardware-software integration</p>
+                </div>
+                
+                <div class="skill-category">
+                    <h3>Systems Analysis & Project Management</h3>
+                    <p>Business process modeling, system design and planning, project coordination, testing and quality assurance, technical documentation</p>
+                </div>
+                
+                <div class="skill-category">
+                    <h3>Productivity & Collaboration Tools</h3>
+                    <p>GitHub (basic repository management, hosting via GitHub Pages), Microsoft Office Suite (Word technical documentation, Excel charts, PowerPoint presentations), Teams collaboration</p>
+                </div>
             </div>
         </div>
 
-        <div class="project">
-            <h3>🐳 Docker Data Pipeline</h3>
-            <p>Containerized full pipeline for consistent deployment using Docker.</p>
-            <div class="tech">
-                <span class="tag">Docker</span>
-                <span class="tag">Airflow</span>
-                <span class="tag">MySQL</span>
+        <!-- Projects Section -->
+        <div class="projects-container" id="projects">
+
+            <!-- Project 1: Arduino Water Tank Controller -->
+            <div class="project even">
+                <div class="image-container">
+                    <img src="project1.jpg" alt="Arduino Water Tank Controller">
+                </div>
+                <div class="description">
+                    <h3>💧 Arduino Water Tank Controller</h3>
+                    <p>Automated level monitoring system with real-time water level detection and control. Features automatic pump control and overflow prevention for efficient water management in residential and commercial applications.</p>
+                    <div class="tech-stack">
+                        <span class="tech-tag">C++</span>
+                        <span class="tech-tag">Arduino</span>
+                        <span class="tech-tag">Sensors</span>
+                        <span class="tech-tag">IoT</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Project 2: PLC Conveyor Belt System -->
+            <div class="project odd">
+                <div class="image-container">
+                    <img src="project2.jpg" alt="PLC Conveyor Belt System">
+                </div>
+                <div class="description">
+                    <h3>🏭 PLC Conveyor Belt System</h3>
+                    <p>Industrial automation system for sorting and packaging with programmable logic controllers. Implemented advanced sorting algorithms and real-time monitoring for high-efficiency material handling operations.</p>
+                    <div class="tech-stack">
+                        <span class="tech-tag">Siemens PLCs</span>
+                        <span class="tech-tag">Simulink</span>
+                        <span class="tech-tag">Automation</span>
+                        <span class="tech-tag">Industrial Control</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Project 3: Flight Reservation System -->
+            <div class="project even">
+                <div class="image-container">
+                    <img src="project3.jpg" alt="Flight Reservation System">
+                </div>
+                <div class="description">
+                    <h3>✈️ Flight Reservation System</h3>
+                    <p>Dual interface booking platform with both desktop and web applications for comprehensive flight management and user booking. Features complete user authentication, booking management, and payment processing.</p>
+                    <div class="tech-stack">
+                        <span class="tech-tag">Java</span>
+                        <span class="tech-tag">JavaScript</span>
+                        <span class="tech-tag">MySQL</span>
+                        <span class="tech-tag">HTML/CSS</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Project 4: Enterprise Network Design -->
+            <div class="project odd">
+                <div class="image-container">
+                    <img src="project4.jpg" alt="Enterprise Network Design">
+                </div>
+                <div class="description">
+                    <h3>🌐 Enterprise Network Design</h3>
+                    <p>Complete CCNA-level network infrastructure with advanced security protocols, routing, and switching configurations. Designed and implemented enterprise-grade network solutions with VLANs, ACLs, and comprehensive security measures.</p>
+                    <div class="tech-stack">
+                        <span class="tech-tag">Cisco Packet Tracer</span>
+                        <span class="tech-tag">Networking</span>
+                        <span class="tech-tag">Security Protocols</span>
+                        <span class="tech-tag">CCNA</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Project 5: Automatic Room Temperature Regulator -->
+            <div class="project even">
+                <div class="image-container">
+                    <img src="project5.jpg" alt="Automatic Room Temperature Regulator">
+                </div>
+                <div class="description">
+                    <h3>🌡️ Automatic Room Temperature Regulator</h3>
+                    <p>Smart climate control system with real-time monitoring and adjustment capabilities. Integrated MATLAB for system modeling and analysis, providing optimal temperature regulation for energy efficiency and comfort.</p>
+                    <div class="tech-stack">
+                        <span class="tech-tag">C++</span>
+                        <span class="tech-tag">Arduino</span>
+                        <span class="tech-tag">MATLAB</span>
+                        <span class="tech-tag">Temperature Sensors</span>
+                    </div>
+                </div>
             </div>
         </div>
 
-        <div class="project">
-            <h3>🧪 Data Sampling Tool</h3>
-            <p>Tool that analyzes CSV/JSON data and auto-generates queries for fast exploration.</p>
-            <div class="tech">
-                <span class="tag">Python</span>
-                <span class="tag">Pandas</span>
+        <!-- Contact Section -->
+        <div class="contact-section" id="contact-full">
+            <div class="contact-container">
+                <div class="contact-content">
+                    <h2>Let's Connect</h2>
+                    <p>I'm always open to discussing new opportunities, interesting projects, or potential collaborations. Whether you're looking for a dedicated developer or want to explore innovative solutions together, I'd love to hear from you.</p>
+                    
+                    <div class="contact-details">
+                        <div class="contact-item">
+                            <div class="contact-icon">📧</div>
+                            <div class="contact-text">
+                                <div class="label">Email</div>
+                                <div class="value">jaytm083@gmail.com</div>
+                            </div>
+                        </div>
+                        <div class="contact-item">
+                            <div class="contact-icon">📱</div>
+                            <div class="contact-text">
+                                <div class="label">Phone</div>
+                                <div class="value">068-344-3774</div>
+                            </div>
+                        </div>
+                        <div class="contact-item">
+                            <div class="contact-icon">📍</div>
+                            <div class="contact-text">
+                                <div class="label">Location</div>
+                                <div class="value">Cape Town, South Africa</div>
+                            </div>
+                        </div>
+                        <div class="contact-item">
+                            <div class="contact-icon">💼</div>
+                            <div class="contact-text">
+                                <div class="label">Status</div>
+                                <div class="value">Available for Opportunities</div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="social-links">
+    <a href="https://www.linkedin.com/in/joseph-tsie-7b507321a" class="social-link" title="LinkedIn" target="_blank">
+        <svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor">
+            <path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/>
+        </svg>
+    </a>
+    <a href="https://github.com/JoTM-stack" class="social-link" title="GitHub" target="_blank">
+        <svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor">
+            <path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"/>
+        </svg>
+    </a>
+    <a href="https://jotm-stack.github.io/Portfolio/" class="social-link" title="Portfolio" target="_blank">🌐</a>
+    <a href="mailto:jaytm083@gmail.com" class="social-link" title="Email">📧</a>
+</div>
+                </div>
+                
+                <div class="contact-image">
+                    <img src="Jay.jpg" alt="Joseph Tsie Contact" onerror="this.style.display='none'">
+                </div>
             </div>
         </div>
-
     </div>
-</div>
-```
 
-</div>
+    <!-- LinkedIn Modal -->
+    <div id="linkedinModal" class="linkedin-modal">
+        <div class="linkedin-modal-content">
+            <h3>🔗 LinkedIn Profile</h3>
+            <p>My LinkedIn profile is currently being updated and will be available soon.</p>
+            <p>In the meantime, feel free to reach out directly via:</p>
+            <p><strong>📧 jaytm083@gmail.com</strong></p>
+            <button onclick="closeLinkedInModal()">Got it!</button>
+        </div>
+    </div>
 
-<!-- CONTACT -->
+    <script>
+        // LinkedIn modal functions
+        function showLinkedInMessage(event) {
+            event.preventDefault();
+            document.getElementById('linkedinModal').style.display = 'block';
+        }
 
-<div class="section" id="contact">
-    <div class="box">
-        <h2>Contact</h2>
+        function closeLinkedInModal() {
+            document.getElementById('linkedinModal').style.display = 'none';
+        }
 
-```
-    <p>Email: jaytm083@gmail.com</p>
-    <p>Phone: 068 344 3774</p>
+        // Close modal when clicking outside of it
+        window.onclick = function(event) {
+            const modal = document.getElementById('linkedinModal');
+            if (event.target === modal) {
+                modal.style.display = 'none';
+            }
+        }
 
-    <br>
+        // Close modal with Escape key
+        document.addEventListener('keydown', function(event) {
+            if (event.key === 'Escape') {
+                document.getElementById('linkedinModal').style.display = 'none';
+            }
+        });
 
-    <p>
-        <a href="https://github.com/JoTM-stack" target="_blank">GitHub</a> |
-        <a href="https://www.linkedin.com/in/joseph-tsie-7b507321a" target="_blank">LinkedIn</a>
-    </p>
-</div>
-```
+        // Add fade-in animation to projects as they come into view
+        const observerOptions = {
+            threshold: 0.2,
+            rootMargin: '0px 0px -50px 0px'
+        };
 
-</div>
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('fade-in');
+                }
+            });
+        }, observerOptions);
 
-</div>
+        // Observe all project elements and about section
+        document.querySelectorAll('.project, .about-section').forEach(element => {
+            observer.observe(element);
+        });
 
+        // Smooth scrolling for navigation
+        document.querySelectorAll('nav a').forEach(link => {
+            link.addEventListener('click', function(e) {
+                e.preventDefault();
+                const targetId = this.getAttribute('href').substring(1);
+                const targetElement = document.getElementById(targetId);
+                if (targetElement) {
+                    targetElement.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                }
+            });
+        });
+    </script>
 </body>
+
 </html>
+
+
+
+
+
+
+
+
